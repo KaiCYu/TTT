@@ -26,26 +26,58 @@
 // Try your best to work on this challenge without referring to outside resources. However, if you have to look things up online, go ahead. 
 
 
-
+//instantiate new board
 const Board = () => {
-  const board = [[0, 0, 0],
-                 [0, 0, 0],
-                 [0, 0, 0],]
-  return board;
+  return [[0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]];
 }
-//1 = X, 2 = O;
 
 const Game = () => {
   //game logic 
-  const board = new Board();
-  let playerTurn = 1; // or 2
+  this.board = new Board();
+  this.player = 1;
+  //1 = X, 2 = O;
+}
 
+//[1, 2] as position
+Game.prototype.placeMove = (position) => { 
+  this.checkWin();
+
+  let x = position[0];
+  let y = position[1];
   
+  //place move
+  this.board[x][y] = this.player;
+
+  this.switchPlayer();
+  return this.board;
+}
+
+Game.prototype.checkWin = (board) => {
+  let currentPlayer = this.player;
+  //check if current player has 3 in a row
+    //call this.playerWon();
+  //else
+    //return board;
+}
+
+Game.prototype.playerWon = () => {
+  console.log(`${this.player} has won!`);
+  return;
+}
+
+Game.prototype.switchPlayer = () => {
+  if (this.player === 1) {
+    this.player = 2;
+  } else {
+    this.player = 1;
+  }
 }
 
 
-
-
+const newGame = new Game();
+console.log(newGame);
 
 
 
