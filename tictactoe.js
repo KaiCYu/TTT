@@ -43,7 +43,7 @@ const Game = () => {
 //[1, 2] as position
 Game.prototype.placeMove = (position) => { 
   this.checkWin();
-
+  console.log(`it's player ${this.player}'s turn`);
   let x = position[0];
   let y = position[1];
   
@@ -56,6 +56,40 @@ Game.prototype.placeMove = (position) => {
 
 Game.prototype.checkWin = (board) => {
   let currentPlayer = this.player;
+
+  const winConditions = [
+    [[1, 1, 1],
+     [0, 0, 0],
+     [0, 0, 0]],
+     
+    [[0, 0, 0],
+     [1, 1, 1],
+     [0, 0, 0]],
+
+    [[0, 0, 0],
+     [0, 0, 0],
+     [1, 1, 1]],
+
+    [[1, 0, 0],
+     [1, 0, 0],
+     [1, 0, 0]],
+
+    [[0, 1, 0],
+     [0, 1, 0],
+     [0, 1, 0]],
+
+    [[0, 0, 1],
+     [0, 0, 1],
+     [0, 0, 1]],
+
+    [[1, 0, 0],
+     [0, 1, 0],
+     [0, 0, 1]],
+
+    [[0, 0, 1],
+     [0, 1, 0],
+     [1, 0, 0]],
+  ]
   //check if current player has 3 in a row
     //call this.playerWon();
   //else
